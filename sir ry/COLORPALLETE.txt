@@ -1,0 +1,5 @@
+#38b6ff
+#f5e8dd
+#405D72
+white
+black

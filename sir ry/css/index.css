@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+}
+
+.animated-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #38b6ff;
+    box-shadow: 0 0 0 2px #38b6ff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button svg {
+    position: absolute;
+    width: 24px;
+    fill: white;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .arr-1 {
+    right: 16px;
+  }
+  
+  .animated-button .arr-2 {
+    left: -25%;
+  }
+  
+  .animated-button .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #38b6ff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: #212121;
+    border-radius: 12px;
+  }
+  
+  .animated-button:hover .arr-1 {
+    right: -25%;
+  }
+  
+  .animated-button:hover .arr-2 {
+    left: 16px;
+  }
+  
+  .animated-button:hover .text {
+    transform: translateX(12px);
+  }
+  
+  .animated-button:hover svg {
+    fill: #212121;
+  }
+  
+  .animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px #38b6ff;
+  }
+  
+  .animated-button:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+  }
+  
+
+
+
+body{
+    background-image: url(../assets/hero-bg.png);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+nav {
+    padding: 20px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+nav h1{
+    order: 1; 
+}
+nav .att{
+    margin-right: -900px;
+}
+nav a {
+    margin-right: 100px;
+    order: 2;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    font-family: inherit;
+    font-weight: 100;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+  
+  a:focus,
+  a:hover {
+    color: #38b6ff;
+  }
+  
+  a:focus:after,
+  a:hover:after {
+    width: 100%;
+    left: 0%;
+  }
+  
+  a:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #38b6ff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+nav h1{
+    color: #38b6ff;
+    font-size: 30px;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main div{
+    margin: 60px;
+    width: 500px;
+    height: 500px;
+    margin-bottom: -30px;
+}
+.desc{
+    padding: 10px;
+    padding-top: 100px;
+}
+.desc .heading{
+    font-size: 30px;
+    font-weight: 1000;
+}
+.desc button{
+    border: 0;
+    outline: none;
+    width: 200px;
+    height: 50px;
+    background-color: #38b6ff;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 50px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px 0 rgb(91, 91, 91);
+    transition: 0.3s ease-in-out;
+}
+.desc button:hover{
+    box-shadow: 0px 0px 0px 0 rgb(91, 91, 91);
+}
+.desc h1 span{
+    color: #38b6ff;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.desc h1{
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.image img{
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    filter: drop-shadow(0,0,10px, rgba(0,0,0,0.5));
+}
+.arrowdown{
+    text-decoration: none;
+    color: #38b6ff;
+    font-size: 50px;
+    position: relative;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 200px;
+}
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 30%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+.banner h1{
+    font-size: 50px;
+    font-weight: 1000;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-9deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-9deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(450px);
+}
+.banner .slider .item img{
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 3px;
+    /* border: 1px solid #38b6ff; */
+}
+@media screen and (max-width: 1023px) {
+    .banner .slider{
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(300px);
+    }
+}
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+}
+
