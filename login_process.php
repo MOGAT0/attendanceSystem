@@ -24,7 +24,7 @@ if (isset($_POST['Login'])) {
             alert("Alert Empty Username");
             location.href = "login.php";
         </script>
-<?php
+        <?php
     } else {
         $sql = sprintf("select id,email,password,super_user from attendance where email='$email' and password='$password' ");
         $request = mysqli_query($conn, $sql);
@@ -36,6 +36,13 @@ if (isset($_POST['Login'])) {
             session_start();
             $_SESSION["user_id"] = $result_array['id'];
             header("Location: dashboard.php");
+        } else {
+        ?>
+            <script>
+                alert("Invalid username and password");
+                location.href = "login.php";
+            </script>
+<?php
         }
     }
 }

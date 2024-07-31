@@ -1,26 +1,46 @@
+<?php
+session_start();
+
+if (empty($_SESSION)) {
+    echo "<h1  style='color: red; text-decoration: solid;'>404</h1>";
+    exit();
+} else {
+    if (isset($_GET["id"])) {
+        $user_id = $_GET["id"];
+    } else {
+        echo "<h1  style='color: red; text-decoration: solid;'>404</h1>";
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance System</title>
 </head>
+
 <body>
     <center>
         <h1>Create Student</h1>
-    
-        <form action="" method="post">
+
+        <form action="update_process.php" method="post">
             <label>Student ID</label> <br>
-            <input type="text" name="stud_id" required> </p>
-    
+            <input type="text" name="stud_SchoolID" required> </p>
+
+            <label>School Email</label> <br>
+            <input type="text" name="stud_email" required> </p>
+
             <label>Last Name</label> <br>
-            <input type="text" name="stud_pass" required> </p>
+            <input type="text" name="stud_last" required> </p>
 
             <label>First Name</label> <br>
-            <input type="text" name="stud_pass" required> </p>
+            <input type="text" name="stud_first" required> </p>
 
             <label>Middle Name</label> <br>
-            <input type="text" name="stud_pass" required> </p>
+            <input type="text" name="stud_middle" required> </p>
 
             <label for="course">Course:</label> <br>
             <select name="course" id="course">
@@ -46,9 +66,10 @@
 
             <label>Password</label> <br>
             <input type="text" name="stud_pass" required> </p>
-    
-            <input type="submit" name="update" value="Update">
+            <input type="hidden" name="stud_id" value="<?php echo $user_id ?>">
+            <button type="submit" name="Update_StudentAcc">Create</button>
         </form>
     </center>
 </body>
+
 </html>
