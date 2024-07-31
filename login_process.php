@@ -35,7 +35,7 @@ if (isset($_POST['Login'])) {
         ) {
             session_start();
             $_SESSION["user_id"] = $result_array['id'];
-            header("Location: create.php");
+            header("Location: dashboard.php");
         }
     }
 }
