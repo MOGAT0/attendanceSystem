@@ -58,6 +58,7 @@ if (empty($_SESSION)) {
                 <?php
                 $sql = sprintf("select * from attendance where section='%s' and subject='%s'", $userinfo['section'], $userinfo['subject']);
                 $get_data = mysqli_query($conn, $sql);
+                mysqli_fetch_array($get_data);
                 while ($row = mysqli_fetch_array($get_data)) {
                 ?>
                     <tr>
@@ -68,7 +69,7 @@ if (empty($_SESSION)) {
                         <td><?php echo $row['lastname'] ?></td>
                         <td><?php echo $row['Program'] ?></td>
                         <td><a href="update.php?id=<?php echo $row['id']; ?>" <button><img width="32" height="32" src="https://img.icons8.com/ios-glyphs/32/edit-user-female.png" alt="edit-user-female" /></button></td>
-                        <td><a href="delete.php?id=<?php echo $row['id']; ?>" <button><img width="32" height="32" src="https://img.icons8.com/ios-filled/32/delete-user-male.png" alt="delete-user-male" /></button></td>
+                        <td><a onclick="myFunction(<?php echo $row['id'] ?>)" <button><img width="32" height="32" src="https://img.icons8.com/ios-filled/32/delete-user-male.png" alt="delete-user-male" /></button></td>
                     </tr>
             </tbody>
         <?php
@@ -80,7 +81,13 @@ if (empty($_SESSION)) {
 
 
 
-
+    <script>
+        function myFunction(x) {
+            if (confirm("Are you sure you want to delete it")) {
+                window.location.href = "delete_process.php?delete_student=" + x;
+            }
+        }
+    </script>
 
 </body>
 

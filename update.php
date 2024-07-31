@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "conn.php";
 
 if (empty($_SESSION)) {
     echo "<h1  style='color: red; text-decoration: solid;'>404</h1>";
@@ -7,6 +8,9 @@ if (empty($_SESSION)) {
 } else {
     if (isset($_GET["id"])) {
         $user_id = $_GET["id"];
+        $sql = sprintf("select * from attendance  where id='$user_id'");
+        $request = mysqli_query($conn, $sql);
+        $userinfo = mysqli_fetch_array($request);
     } else {
         echo "<h1  style='color: red; text-decoration: solid;'>404</h1>";
         exit();
@@ -28,22 +32,23 @@ if (empty($_SESSION)) {
 
         <form action="update_process.php" method="post">
             <label>Student ID</label> <br>
-            <input type="text" name="stud_SchoolID" required> </p>
+            <input type="text" name="stud_SchoolID" value="<?php echo $userinfo['student_id'] ?>" required> </p>
 
             <label>School Email</label> <br>
-            <input type="text" name="stud_email" required> </p>
+            <input type="text" name="stud_email" value="<?php echo $userinfo['email'] ?>" required> </p>
 
             <label>Last Name</label> <br>
-            <input type="text" name="stud_last" required> </p>
+            <input type="text" name="stud_last" value="<?php echo $userinfo['lastname'] ?>" required> </p>
 
             <label>First Name</label> <br>
-            <input type="text" name="stud_first" required> </p>
+            <input type="text" name="stud_first" value="<?php echo $userinfo['firstname'] ?>" required> </p>
 
             <label>Middle Name</label> <br>
-            <input type="text" name="stud_middle" required> </p>
+            <input type="text" name="stud_middle" value="<?php echo $userinfo['middlename'] ?>" required> </p>
 
             <label for="course">Course:</label> <br>
             <select name="course" id="course">
+                <option value="<?php echo $userinfo['Program'] ?>"><?php echo $userinfo['Program'] ?></option>
                 <option value="bs-hospitality-management">BS in Hospitality Management</option>
                 <option value="bs-tourism-management">BS in Tourism Management</option>
                 <option value="bs-business-administration-marketing">BS in Business Administration Major in Marketing Management</option>
@@ -65,7 +70,7 @@ if (empty($_SESSION)) {
             </select> </p>
 
             <label>Password</label> <br>
-            <input type="text" name="stud_pass" required> </p>
+            <input type="text" name="stud_pass" value="<?php echo $userinfo['password'] ?>" required> </p>
             <input type="hidden" name="stud_id" value="<?php echo $user_id ?>">
             <button type="submit" name="Update_StudentAcc">Create</button>
         </form>

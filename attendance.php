@@ -71,8 +71,7 @@ if (empty($_SESSION)) {
                     <TH>&nbsp;MIDDLE NAME&nbsp;</TH>
                     <TH>&nbsp;LASTNAME&nbsp;</TH>
                     <TH>&nbsp;COURSE&nbsp;</TH>
-                    <TH>&nbsp;Action1&nbsp;</TH>
-                    <TH>&nbsp;Action2&nbsp;</TH>
+                    <TH>&nbsp;DELETE&nbsp;</TH>
 
                 </tr>
 
@@ -90,8 +89,7 @@ if (empty($_SESSION)) {
                         <td><?php echo $row['middlename'] ?></td>
                         <td><?php echo $row['lastname'] ?></td>
                         <td><?php echo $row['Program'] ?></td>
-                        <td><a href="update.php?id=<?php echo $row['id']; ?>" <button><img width="32" height="32" src="https://img.icons8.com/ios-glyphs/32/edit-user-female.png" alt="edit-user-female" /></button></td>
-                        <td><a href="delete.php?id=<?php echo $row['id']; ?>" <button><img width="32" height="32" src="https://img.icons8.com/ios-filled/32/delete-user-male.png" alt="delete-user-male" /></button></td>
+                        <td><a onclick="myFunction(<?php echo $row['id'] ?>)"><img width="32" height="32" src="https://img.icons8.com/ios-filled/32/delete-user-male.png" alt="delete-user-male" /></td>
                     </tr>
             </tbody>
         <?php
@@ -101,6 +99,15 @@ if (empty($_SESSION)) {
         <br>
         <br>
     </center>
+
+
+    <script>
+        function myFunction(x) {
+            if (confirm("Are you sure you want to delete it")) {
+                window.location.href = "delete_process.php?delete_attendance=" + x;
+            }
+        }
+    </script>
 </body>
 
 </html>

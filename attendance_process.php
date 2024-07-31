@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['add_attendance'])) {
         $stud_id = $_POST['student_name'];
         $date = $_POST['date'];
-        $sql = sprintf("select student_id,firstname,lastname,middlename,email from attendance where id='$stud_id'");
+        $sql = sprintf("select student_id,firstname,lastname,middlename,email,`Program` from attendance where id='$stud_id'");
         $result = mysqli_query($conn, $sql);
         $student_add = mysqli_fetch_array($result);
         if (mysqli_num_rows($result) == 1) {
@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $check_record = mysqli_query($conn, $sql);
             if (mysqli_num_rows($check_record) <= 0) {
                 $insert = sprintf(
-                    "INSERT INTO attendance (student_id, email, lastname, firstname, middlename, program,`date`,teacher) 
+                    "INSERT INTO attendance (student_id, email, lastname, firstname, middlename, `Program`,`date`,teacher) 
                  VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')",
                     $student_add['student_id'],
                     $student_add['email'],
                     $student_add['lastname'],
                     $student_add['firstname'],
                     $student_add['middlename'],
-                    $student_add['program'],
+                    $student_add['Program'],
                     $date,
                     $_SESSION["user_id"]
                 );
